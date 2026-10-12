@@ -1,46 +1,48 @@
+
 public class StackArray {
-    private int maxSize;
-    private int[] stackArray;
-    private int top;
+   private int maxSize;
+   private int[] stackArray;
+   private int top;
 
-    public StackArray(int maxSize) {
-        this.maxSize = maxSize;
-        this.stackArray = new int[maxSize];
-        this.top = -1;
-    }
+   public StackArray(int var1) {
+      this.maxSize = var1;
+      this.stackArray = new int[var1];
+      this.top = -1;
+   }
 
-    public boolean isFull() {
-        return top == maxSize - 1;
-    }
+   public boolean isFull() {
+      return this.top == this.maxSize - 1;
+   }
 
-    public boolean isEmpty() {
-        return top == -1;
-    }
+   public boolean isEmpty() {
+      return this.top == -1;
+   }
 
-    public void push(int j) {
-        if (isFull()) {
-            throw new IllegalStateException("Stack is full");
-        }
-        stackArray[++top] = j;
-    }
+   public void push(int var1) {
+      if (this.isFull()) {
+         throw new IllegalStateException("Stack is full");
+      } else {
+         this.stackArray[++this.top] = var1;
+      }
+   }
 
-    public int pop() {
-        if (isEmpty()) {
-            return -1;
-        }
-        return stackArray[top--];
-    }
+   public int pop() {
+      return this.isEmpty() ? -1 : this.stackArray[this.top--];
+   }
 
-    public int getMin() {
-        if (isEmpty()) {
-            return -1;
-        }
-        int minima = stackArray[0];
-        for (int i = 1; i <= top; i++) {
-            if (stackArray[i] < minima) {
-                minima = stackArray[i];
+   public int getMin() {
+      if (this.isEmpty()) {
+         return -1;
+      } else {
+         int var1 = this.stackArray[0];
+
+         for(int var2 = 1; var2 <= this.top; ++var2) {
+            if (this.stackArray[var2] < var1) {
+               var1 = this.stackArray[var2];
             }
-        }
-        return minima;
-    }
+         }
+
+         return var1;
+      }
+   }
 }
